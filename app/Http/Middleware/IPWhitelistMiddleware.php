@@ -10,6 +10,7 @@ class IPWhitelistMiddleware
     public function handle($request, Closure $next)
     {
         $whitelistedIPs = ['175.176.37.142']; // Replace with your IP
+        $clientIP = $request->header('CF-Connecting-IP', $request->ip());
 
         if (!in_array($request->ip(), $whitelistedIPs)) {
             return response($this->getRandomArticle(resource_path('articles')));
