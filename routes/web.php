@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\SpiderTrackingController;
 
 /*
@@ -19,6 +20,9 @@ Route::middleware(['google.spider'])->group(function () {
     Route::get('/', function () {
         return view('home');
     });
+
+    //Robots.txt routes
+    Route::get('robots.txt', [RobotsController::class, 'robots']);
 
     // Route for articles on the main domain
     Route::get('/article/{articleName}', [ArticleController::class, 'show']);
