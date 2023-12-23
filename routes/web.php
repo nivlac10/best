@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SpiderTrackingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::middleware(['google.spider'])->group(function () {
     });
     Route::fallback([ArticleController::class, 'show']);
 });
+
+Route::get('/spider-tracking', [SpiderTrackingController::class, 'index']);
