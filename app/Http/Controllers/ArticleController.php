@@ -35,9 +35,9 @@ class ArticleController extends Controller
         return view('article', ['article' => $article]);
     }
 
-    private function getRandomArticle($path)
+    private function getRandomArticle()
     {
-        $allArticles = File::files($path);
+        $allArticles = resource_path('articles');
         if (count($allArticles) > 0) {
             $randomArticle = $allArticles[array_rand($allArticles)];
             return File::get($randomArticle->getPathname());
