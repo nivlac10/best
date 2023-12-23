@@ -38,12 +38,20 @@ class SpiderTrackingController extends Controller
                     break;
                 }
                 if (strpos($line, 'Google Spider Detected') !== false) {
-                    $details[] = json_decode($this->extractJson($line), true);
+                    $decodedLine = json_decode($this->extractJson($line), true);
+                    $decodedLine['time'] = $this->extractTime($line); // Extract and add time
+                    $details[] = $decodedLine;
                 }
             }
         }
 
         return $details;
+    }
+    
+    private function extractTime($line)
+    {
+        preg_match('/\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/', $line, $matches);
+        return $matches[1] ?? now()->format('Y-m-d H:i:s');
     }
 
     private function extractJson($string)

@@ -49,6 +49,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Date/Time</th>
                         <th>URL</th>
                         <th>User Agent</th>
                         <th>IP Address</th>
@@ -57,6 +58,7 @@
                 <tbody>
                     @foreach ($spiderDetails as $detail)
                         <tr>
+                            <td>{{ $detail['time'] ?? 'N/A' }}</td>
                             <td>{{ $detail['url'] }}</td>
                             <td>{{ $detail['userAgent'] }}</td>
                             <td>{{ $detail['ip'] }}</td>
