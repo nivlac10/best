@@ -31,5 +31,5 @@ Route::middleware(['google.spider'])->group(function () {
     Route::domain('{keyword}.{domain}')->group(function () {
         Route::get('/', [ArticleController::class, 'show']);
     });
-    Route::fallback([ArticleController::class, 'showRandom']);
+    Route::fallback([ArticleController::class, 'show']);
 });
