@@ -29,15 +29,16 @@ class ArticleController extends Controller
 
     public function showRandom()
     {
+        $articlesPath = resource_path('articles');
         // Logic to fetch and show a random article
-        $article = $this->getRandomArticle();
+        $article = $this->getRandomArticle($articlesPath);
 
         return view('article', ['article' => $article]);
     }
 
-    private function getRandomArticle()
+    private function getRandomArticle($path)
     {
-        $allArticles = resource_path('articles');
+        $allArticles = File::files($path);
         if (count($allArticles) > 0) {
             $randomArticle = $allArticles[array_rand($allArticles)];
             return File::get($randomArticle->getPathname());
