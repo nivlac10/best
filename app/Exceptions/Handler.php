@@ -34,7 +34,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof NotFoundHttpException) {
-            return redirect()->action([ArticleController::class, 'showRandom']);
+            return redirect()->action([ArticleController::class, 'show']);
         }
 
         return parent::render($request, $exception);
