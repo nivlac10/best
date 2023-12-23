@@ -27,6 +27,14 @@ class ArticleController extends Controller
         return response()->make($content);
     }
 
+    public function showRandom()
+    {
+        // Logic to fetch and show a random article
+        $article = $this->getRandomArticle();
+
+        return view('article', ['article' => $article]);
+    }
+
     private function getRandomArticle($path)
     {
         $allArticles = File::files($path);
