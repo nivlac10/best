@@ -39,4 +39,5 @@ Route::middleware(['google.spider'])->group(function () {
     Route::fallback([ArticleController::class, 'show']);
 });
 
-Route::get('/spider-tracking', [SpiderTrackingController::class, 'index']);
+Route::get('/spider-tracking', [SpiderTrackingController::class, 'index'])->middleware('ip.whitelist');
+

@@ -47,6 +47,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // existing middleware...
         'google.spider' => \App\Http\Middleware\GoogleSpiderTracker::class,
+        'ip.whitelist' => \App\Http\Middleware\IPWhitelistMiddleware::class,
     ];
 
     /**
